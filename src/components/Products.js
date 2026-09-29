@@ -492,18 +492,18 @@ export default function OurProducts() {
                     ))}
                 </div>
 
-                {/* DETAIL MODAL */}
+
                 <AnimatePresence>
                     {active && (
-
                         <motion.div
-
                             style={styles.overlay}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setActive(null)}
                         >
+
+
                             <motion.div
 
                                 style={styles.modal}
@@ -592,9 +592,12 @@ export default function OurProducts() {
 
 
                             </motion.div>
+
+
                         </motion.div>
                     )}
                 </AnimatePresence>
+
                 {active && (
                     <div
                         id="pdf-content"
@@ -626,11 +629,11 @@ export default function OurProducts() {
                         />
 
                         {/* OVERVIEW */}
-                        <h3>Overview</h3>
+                        <h3 style={styles.cardHeading}>Overview</h3>
                         <p>{active.overview}</p>
 
                         {/* VARIANTS */}
-                        <h3>Available Variants</h3>
+                        <h3 style={styles.cardHeading}>Available Variants</h3>
                         <ul>
                             {active.variants.map((v, i) => (
                                 <li key={i}>{v}</li>
@@ -638,7 +641,7 @@ export default function OurProducts() {
                         </ul>
 
                         {/* SPECS */}
-                        <h3>Technical Specifications</h3>
+                        <h3 style={styles.cardHeading}>Technical Specifications</h3>
                         <ul>
                             {active.specs.map((s, i) => (
                                 <li key={i}>{s}</li>
@@ -646,7 +649,7 @@ export default function OurProducts() {
                         </ul>
 
                         {/* IDEAL FOR */}
-                        <h3>Ideal For</h3>
+                        <h3 style={styles.cardHeading}>Ideal For</h3>
                         <ul>
                             {active.idealFor.map((i, idx) => (
                                 <li key={idx}>{i}</li>
@@ -654,7 +657,7 @@ export default function OurProducts() {
                         </ul>
 
                         {/* ADDONS */}
-                        <h3>Add-On Options</h3>
+                        <h3 style={styles.cardHeading}>Add-On Options</h3>
                         <ul>
                             {active.addons.map((a, idx) => (
                                 <li key={idx}>{a}</li>
@@ -662,7 +665,7 @@ export default function OurProducts() {
                         </ul>
 
                         {/* GALLERY */}
-                        <h3>Product Images</h3>
+                        <h3 style={styles.cardHeading}>Product Images</h3>
                         {active.images.map((img, index) => (
 
                             <img
@@ -757,7 +760,16 @@ const styles = {
     cardContent: {
         padding: "25px"
     },
-
+    cardHeading: {
+        color: "#D4AF37",
+        fontSize: "20px",
+        fontWeight: "700",
+        marginBottom: "18px",
+        borderBottom: "2px solid rgba(212,175,55,.25)",
+        paddingBottom: "10px",
+        textTransform: "uppercase",
+        letterSpacing: "1px"
+    },
     cardTitle: {
         color: "#fff",
         fontSize: "22px",
@@ -782,36 +794,27 @@ const styles = {
     overlay: {
         position: "fixed",
         inset: 0,
-        background: "rgba(0,0,0,0.6)",
+        background: "rgba(0,0,0,.85)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 1000,
-        padding: 20           // 👈 important for mobile
+        padding: "15px",
+        zIndex: 9999
     },
 
-    // modal: {
-    //     background: "#fff",
-    //     borderRadius: 12,
-    //     width: "100%",
-    //     maxWidth: 650,
-    //     maxHeight: "85vh",    // 👈 FIXED HEIGHT LIMIT
-    //     padding: 28,
-    //     overflowY: "auto",    // 👈 SCROLL INSIDE MODAL
-    //     textAlign: "left",
-    //     boxShadow: "0 20px 40px rgba(0,0,0,0.35)"
-    // },
     modal: {
-        background: "#111",
-        color: "#fff",
-        borderRadius: "25px",
-        border: "1px solid rgba(212,175,55,.2)",
+        background: "#0d0d0d",
         width: "100%",
-        maxWidth: "1000px",
-        maxHeight: "90vh",
+        maxWidth: "1200px",
+        maxHeight: "95vh",
         overflowY: "auto",
-        padding: "35px",
-        position: "relative"
+        borderRadius: "24px",
+        border: "1px solid rgba(212,175,55,.2)",
+        padding: "20px",
+        position: "relative",
+        boxSizing: "border-box",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none"
     },
     modalImage: {
         width: "100%",
@@ -830,12 +833,7 @@ const styles = {
         color: "#444",
         marginBottom: 20
     },
-    ctaGroup: {
-        display: "flex",
-        gap: 20,
-        justifyContent: "center",
-        marginBottom: 18
-    },
+
     quoteBtn: {
         background: "#D4AF37",
         color: "#111",
@@ -861,12 +859,7 @@ const styles = {
     //     borderRadius: 6,
     //     cursor: "pointer"
     // },
-    gallery: {
-        display: "flex",
-        gap: 12,
-        overflowX: "auto",
-        marginBottom: 20
-    },
+
 
     galleryImg: {
         height: "220px",
@@ -889,7 +882,8 @@ const styles = {
     sectionTitle: {
         fontSize: 18,
         fontWeight: 600,
-        marginBottom: 6
+        marginBottom: 6,
+        color: "#D4AF37",
     },
 
     sectionText: {
@@ -907,9 +901,10 @@ const styles = {
 
     ctaGroup: {
         display: "flex",
-        gap: 20,
+        flexWrap: "wrap",
+        gap: "15px",
         justifyContent: "center",
-        marginTop: 20
+        marginTop: "30px"
     },
 
     quoteBtn: {
@@ -953,14 +948,6 @@ const styles = {
         boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
     },
 
-    gallery: {
-        display: "flex",
-        gap: 14,
-        overflowX: "auto",
-        paddingBottom: 10,
-        marginBottom: 20,
-        scrollBehavior: "smooth"
-    },
 
     galleryImg: {
         height: 180,
@@ -997,5 +984,113 @@ const styles = {
         maxWidth: "700px",
         margin: "auto"
     },
+    heroImageContainer: {
+        position: "relative",
+        width: "100%",
+        height: "clamp(220px,40vw,450px)",
+        borderRadius: "20px",
+        overflow: "hidden",
+        marginBottom: "25px"
+    },
+
+    heroImage: {
+        width: "100%",
+        height: "100%",
+        objectFit: "cover"
+    },
+
+    heroOverlay: {
+        position: "absolute",
+        inset: 0,
+        background:
+            "linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.2))",
+        display: "flex",
+        alignItems: "flex-end",
+        padding: "40px"
+    },
+
+    modalBadge: {
+        background: "#D4AF37",
+        color: "#111",
+        padding: "8px 18px",
+        borderRadius: "30px",
+        fontWeight: "700",
+        fontSize: "13px"
+    },
+
+    modalTitle: {
+        fontSize: "42px",
+        fontWeight: "800",
+        color: "#fff",
+        marginTop: "15px",
+        marginBottom: "10px"
+    },
+
+    modalSubTitle: {
+        color: "#ddd",
+        fontSize: "18px"
+    },
+
+    infoCard: {
+        background: "rgba(255,255,255,.04)",
+        border: "1px solid rgba(212,175,55,.15)",
+        borderRadius: "20px",
+        padding: "30px",
+        marginBottom: "30px"
+    },
+
+    infoTitle: {
+        color: "#D4AF37",
+        marginBottom: "15px",
+        fontSize: "22px"
+    },
+
+    specGrid: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+        gap: "20px",
+        width: "100%"
+    },
+    specCard: {
+        background: "rgba(255,255,255,.04)",
+        border: "1px solid rgba(212,175,55,.12)",
+        borderRadius: "20px",
+        padding: "25px"
+    },
+
+    cardHeading: {
+        color: "#D4AF37",
+        marginBottom: "15px",
+        fontSize: "18px",
+        fontWeight: "700"
+    },
+
+    sectionText: {
+        color: "#d8d8d8",
+        lineHeight: "1.9",
+        fontSize: "15px"
+    },
+
+    list: {
+        color: "#d0d0d0",
+        lineHeight: "2",
+        paddingLeft: "18px"
+    },
+    gallery: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+        gap: "15px",
+        marginBottom: "25px"
+    },
+
+    galleryImg: {
+        width: "100%",
+        height: "180px",
+        objectFit: "cover",
+        borderRadius: "15px",
+        border: "1px solid rgba(212,175,55,.15)"
+    },
+
+
 
 };
